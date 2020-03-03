@@ -1,0 +1,179 @@
+<div id="resume_edit" class="text-center">
+                
+    <!-- Modal -->
+    <div class="modal fade" id="resume_builder_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Resume Builder</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="resume_creation_form" action="/resume_create" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="title">Resume Label</label>
+                            <input id="title" type="text" class="form-control" name="title" aria-describedby="Resume Label" placeholder="My First Resume" required>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="res_fname">First Name</label>
+                                <input id="res_fname" type="text" class="form-control" name="res_fname" aria-describedby="firstname" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="res_lname">Last Name</label>
+                                <input id="res_lname" type="text" class="form-control" name="res_lname" aria-describedby="lastname" placeholder="Last Name">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="res_email">Email</label>
+                                <input type="res_email" id="email" class="form-control" name="res_email" aria-describedby="Your Email" placeholder="Your Email">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="res_number">Phone Number</label>
+                                <input type="text" id="res_number" class="form-control" name="res_number" aria-describedby="Phone Number" placeholder="503-XXX-XXXX">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="res_address">Address</label>
+                                <input id="res_address" type="text" class="form-control" name="res_address" aria-describedby="Address" placeholder="Street Address">
+                            </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                <label for="city_state">City & State Code</label>
+                                <input type="text" id="city_state" class="form-control" name="city_state" aria-describedby="City & State" placeholder="Portland, OR">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="zip">Zip Code</label>
+                                    <input type="text" id="zip" class="form-control" name="zip" aria-describedby="Zipcode" placeholder="Your Zip Code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="res_school">School</label>
+                                <input type="text" id="res_school" class="form-control" name="res_school" aria-describedby="School" placeholder="Most Recent School">
+                            </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="gpa">GPA</label>
+                                    <input type="text" id="gpa" class="form-control" name="gpa" aria-describedby="GPA" placeholder="Your GPA">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="res_major">Major</label>
+                                    <input type="text" id="res_major" class="form-control" name="res_major" aria-describedby="Major" placeholder="Major/Area of Study">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="objective">Objective</label>
+                            <textarea rows="5" id="objective" type="text" class="form-control" name="objective" aria-describedby="Objective" placeholder="Your Objective For Attaining A Work Position"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="job1_emp">Work Experience 1</label>
+                            <input id="job1_emp" type="text" class="form-control" name="job1_emp" aria-describedby="Work Experience 1" placeholder="Employer">
+                            <input id="job1_title" type="text" class="form-control" name="job1_title" aria-describedby="Work Experience 1" placeholder="Job Title">
+                            <input id="job1_dates" type="text" class="form-control" name="job1_dates" aria-describedby="Work Experience 1" placeholder="Dates of Employment">
+                            <input id="job1_desc" type="text" class="form-control" name="job1_desc" aria-describedby="Work Experience 1" placeholder="Job Description">
+                        </div>
+                        <div class="form-group">
+                            <label for="job2_emp">Work Experience 2</label>
+                            <input id="job2_emp" type="text" class="form-control" name="job2_emp" aria-describedby="Work Experience 1" placeholder="Employer">
+                            <input id="job2_title" type="text" class="form-control" name="job2_title" aria-describedby="Work Experience 1" placeholder="Job Title">
+                            <input id="job2_dates" type="text" class="form-control" name="job2_dates" aria-describedby="Work Experience 1" placeholder="Dates of Employment">
+                            <input id="job2_desc" type="text" class="form-control" name="job2_desc" aria-describedby="Work Experience 1" placeholder="Job Description">
+                        </div>
+                        <div class="form-group">
+                            <label for="job3_emp">Work Experience 3</label>
+                            <input id="job3_emp" type="text" class="form-control" name="job3_emp" aria-describedby="Work Experience 1" placeholder="Employer">
+                            <input id="job3_title" type="text" class="form-control" name="job3_title" aria-describedby="Work Experience 1" placeholder="Job Title">
+                            <input id="job3_dates" type="text" class="form-control" name="job3_dates" aria-describedby="Work Experience 1" placeholder="Dates of Employment">
+                            <input id="job3_desc" type="text" class="form-control" name="job3_desc" aria-describedby="Work Experience 1" placeholder="Job Description">
+                        </div>
+                        <div class="form-group">
+                                <label for="proj1_title">Project 1</label>
+                                <input id="proj1_title" type="text" class="form-control" name="proj1_title" aria-describedby="Project 1" placeholder="Name for Project 1">
+                                <input id="proj1_desc" type="text" class="form-control" name="proj1_desc" aria-describedby="Project 1" placeholder="Project 1 Description">
+                        </div>
+                        <div class="form-group">
+                                <label for="proj2_title">Project 2</label>
+                                <input id="proj2_title" type="text" class="form-control" name="proj2_title" aria-describedby="Project 2" placeholder="Name for Project 2">
+                                <input id="proj2_desc" type="text" class="form-control" name="proj2_desc" aria-describedby="Project 2" placeholder="Project 2 Description">
+                        </div>
+
+                        <div class="form-group">
+                                <label for="proj3_title">Project 3</label>
+                                <input id="proj3_title" type="text" class="form-control" name="proj3_title" aria-describedby="Project 3" placeholder="Name for Project 3">
+                                <input id="proj3_desc" type="text" class="form-control" name="proj3_desc" aria-describedby="Project 3" placeholder="Project 3 Description">
+
+                        </div>
+                        <div class="form-group">
+                                <label for="skillset">Skill Set</label>
+                                <input id="skillset" type="text" class="form-control" name="skillset" aria-describedby="Skill Set" placeholder="List of your skills">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button id="resume_builder_btn" type="submit" class="btn btn-primary">Finish</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5 class='card-header'>Resumes</h5>
+<div class='card-body'>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+            <h5>Your Uploaded Resumes</h5>
+            <div class="uploaded_resumes">
+                <ol>
+                {% for uploaded_resume in user_resumes.resume_uploads%}
+                    <li id="{{uploaded_resume.key}}" ><a href="{{uploaded_resume.aws_link}}" target="_blank">{{uploaded_resume.filename}}</a>&nbsp;&nbsp;
+                        <button name="{{uploaded_resume.key}}" type="button" class="btn btn-outline-dark delete_uploaded_resume_btn">Delete</button>&nbsp;&nbsp;
+                        <button res_type="resume_uploads" name="{{uploaded_resume.key}}" type="button" class="btn btn-outline-dark set_default_resume_btn">Make Default</button></li>
+                {% endfor %}
+                </ol>
+            </div>
+            <br>
+            <p>Choose a file and select "Upload Resume" to add a new PDF resume to your portfolio.</p>
+            <form id="resume_upload_form" method="POST" action="resume_upload" enctype="multipart/form-data">
+                <input id="resume_file" type="file" name="res_upload">  
+                <button id="resume_upload_btn" class="btn btn-outline-dark" type="button">Upload Resume</button>
+            </form>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+                <h5>Resumes Created Using Resume-Builder</h5>
+                <div class="created_resumes">
+                    <ol>
+                        {% for created_resume in user_resumes.resume_creations%}
+                            <li id="{{created_resume.title}}"><a href="/resume_preview/{{created_resume.title}}" target="_blank">{{created_resume.title}}</a>&nbsp;&nbsp;
+                                <button name="{{created_resume.title}}" type="button" class="btn btn-outline-dark delete_created_resume_btn">Delete</button>&nbsp;&nbsp;
+                                <button res_type="resume_creations" name="{{created_resume.title}}" type="button" class="btn btn-outline-dark set_default_resume_btn">Make Default</button></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+                <br>
+                <p>Select "Build Resume" to use our custom resume-builder template.</p>
+            <button id="resume_builder" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#resume_builder_modal">Build Resume</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/js/functions.js"></script>

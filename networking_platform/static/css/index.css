@@ -1,0 +1,63 @@
+body {
+    height: 100vh;
+    background: url(../images/logo_with_background.png);
+    background-size: cover;
+}
+
+.button{
+    width: 20%; 
+   margin-top: 35px; 
+   margin-left:10px;
+   float:left;
+   bottom: 10%;
+   position: absolute;
+   left: 20%;
+  }
+  
+  .button1{
+    width: 20%; 
+   margin-top: 35px; 
+   margin-right:10px;
+   float:right;
+   bottom: 10%;
+   position: absolute;
+   right: 20%;
+
+  }
+  
+  .button, .button1{
+              text-align: center;
+              appearance: none;
+              background: white;
+              padding: 1em 2em;
+              border: none;
+              color: black;
+              font-size: 1.2em;
+              cursor: pointer;
+              outline: none;
+              overflow: hidden;
+              border-radius: 5px;  
+              filter: opacity(0.9);
+          }
+  .button span, .button1 span{
+              position: relative;
+          }
+  
+  .button::before, .button1::before {
+              --size: 0;
+              
+              content: '';
+              position: absolute;
+              left: var(--x);
+              top: var(--y);
+              width: var(--size);
+              height: var(--size);
+              background: radial-gradient(circle closest-side, #c5c5c5, transparent);
+              transform: translate(-50%, -50%);
+              transition: width .7s ease, height .7s ease;
+          }
+  
+  .button:hover::before, .button1:hover::before{
+              --size: 200px;
+          } 
+ 

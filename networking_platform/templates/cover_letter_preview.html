@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your Cover Letter</title>
+
+    <link rel="stylesheet" href="../static/css/profile.css">
+
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Cedarville+Cursive" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+        h5{
+            color:blue;
+        }
+     </style>
+
+    <div id="cover_letter_edit" class="text-center">
+            
+        <!-- Modal -->
+        <div class="modal fade" id="cl_edit_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cover Letter Builder</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="cover_letter_edit_form" action="/cover_letter_create" method="POST">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="fname">First Name</label>
+                                        <input id="fname" type="text" class="form-control" name="fname" aria-describedby="firstname" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="lname">Last Name</label>
+                                        <input id="lname" type="text" class="form-control" name="lname" aria-describedby="lastname" placeholder="Last Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" class="form-control" name="email" aria-describedby="Your Email" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="number">Phone Number</label>
+                                    <input type="text" id="number" class="form-control" name="number" aria-describedby="Phone Number" placeholder="503-XXX-XXXX">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input id="address" type="text" class="form-control" name="address" aria-describedby="Address" placeholder="Street Address">
+                                </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label for="city_state">City & State Code</label>
+                                    <input type="text" id="city_state" class="form-control" name="city_state" aria-describedby="City & State" placeholder="Portland, OR">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="zip">Zip Code</label>
+                                        <input type="text" id="zip" class="form-control" name="zip" aria-describedby="Zipcode" placeholder="Your Zip Code">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="introduction">Introduction</label>
+                                <textarea rows="5" id="introduction" type="text" class="form-control" name="introduction" aria-describedby="Introduction" placeholder="Your introduction paragraph providing more information about yourself to your future employer"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="bodyparagraph">Body Paragraph</label>
+                                <textarea rows="5" id="bodyparagraph" type="text" class="form-control" name="bodyparagraph" aria-describedby="Body Paragraph" placeholder="Your body paragraph to illustrate your passions."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="conclusion">Conclusion</label>
+                                <textarea rows="5" id="conclusion" type="text" class="form-control" name="conclusion" aria-describedby="Conclusion" placeholder="Your conclusion paragraph to wrap up your cover letter and give a final reason why you are the best fit for this position."></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button id="cl_builder_edit_btn" type="button" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron min-vh-100">
+        <div id="card_content" class="card">
+    
+            <h4 id="title_data" class="card-header">{{cl_data.title}}</h4>
+            <div class="card-body">
+                <h3> <span id="fname_data">{{cl_data.fname}}</span> <span id="lname_data">{{cl_data.lname}}</span></h3>
+                <p><span id="address_data">{{cl_data.address}}</span> | <span id="city_state_data">{{cl_data.city_state}}</span> <span id="zip_data">{{cl_data.zip}}</span>| <span id="num_data">{{cl_data.number}}</span>| <span id="email_data">{{cl_data.email}}</span></p>
+                
+                <hr>
+
+                <p id="intro_data">{{cl_data.introduction}}</p>
+                <p id="body_data">{{cl_data.bodyparagraph}}</p>
+                <p id="conclusion_data">{{cl_data.conclusion}}</p>
+            </div>
+    
+        </div>
+        <br>
+        <div style="text-align:center;">
+            <button style="background-color: white;" id="edit_cl_modal_btn" type="button" class="btn btn-outline-dark edit_cl_btn" data-toggle="modal" data-target="#cl_edit_modal">Edit Cover Letter</button>
+        </div>
+    </div>
+
+    <!--
+      SCRIPTS FOR BOOTSTRAP: jQuery first, then Popper.js, then Bootstrap JS
+    -->
+    <script type="text/javascript" src="../static/js/navbar.js"></script>
+    <script type="text/javascript" src="../static/js/functions.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- image upload js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</body>
+</html>

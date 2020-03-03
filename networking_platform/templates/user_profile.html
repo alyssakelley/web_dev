@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Your Profile</title>
+
+    <link rel="stylesheet" href="../static/css/profile.css">
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Cedarville+Cursive" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+  <!-- main nav bar -->
+  <nav>
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/Kraken">What's Kraken</a></li>
+        <li><a href="mailto:whatskraken422@gmail.com" target="_blank">Contact Us</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+      </ul>
+      <div class="button">
+        <a class="btn-open" href="#"></a>
+      </div>
+  </nav>
+    <div class="overlay">
+      <div class="wrap">
+        <ul class="wrap-nav">
+          <li><a href="index">Home</a>
+          <ul>
+            <li><a href="members">View Members</a></li>
+            <li><a href="profile">My Porttfolio</a></li>
+          </ul>
+          </li>
+          <li><a href="Kraken">What's Kraken</a>
+          <ul>
+            <li><a href="Kraken"></a>About Team</li>
+            <li><a href="Kraken">Designers</a></li>
+            <li><a href="Kraken">Developers</a></li>
+          </ul>
+          </li>
+          <li><a href="mailto:whatskraken422@gmail.com" target="_blank">Contact Us</a>
+          <ul>
+            <li><a href="#">Tel: +1 541-666-6666</a></li>
+            <li><a href="mailto:whatskraken422@gmail.com" target="_blank">Email: whatskraken422@gmail.com</a></li>
+          </ul>
+          </li>
+        </ul>
+        <div class="social">
+          <a href="https://www.facebook.com/whatskraken422/?modal=admin_todo_tour" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-facebook"></i>
+          </div>
+          </a>
+          <a href="https://www.instagram.com/whatskraken422/" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-instagram"></i>
+          </div>
+          </a>
+          <a href="https://bitbucket.org/cis422f19team3/project2/src/master/" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-bitbucket"></i>
+          </div>
+          </a>
+          <a href="https://twitter.com/422Cis" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-twitter"></i>
+          </div>
+          </a>
+          <a href="https://drive.google.com/drive/u/1/folders/1bxKQNk051SlLu3lHUZJk8QFAh1PicJKl" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-google"></i>
+          </div>
+          </a>
+          <p>
+            From: Eugene, Oregon<br>
+              Site: <a href="http://mario-loncarek.from.hr/">weblink here</a>
+          </p>
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron min-vh-100">
+    <!-- <div class="jumbotron"> -->
+      
+    <h1 id="fullname" style="text-align: center; font-family: 'Cedarville Cursive'; font-size: 40px; font-style: italic; font-variant: normal; font-weight: 700; line-height: 40px; " fname="{{intro_data.fname}}" lname="{{intro_data.lname}}">{{session.user_fullname}} 's Portfolio</h1>
+    <br>
+
+    <!-- sub nav -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a class="nav-link active" href="{{session.view_member}}">Introduction</a></li>
+      <li class="nav-item">
+        <form id="get_member_resume" name="{{session.view_member}}" action="/member_resumes/{{session.view_member}}" method="POST">
+          <button class="nav-link" type="submit">Resume</button>
+        </form>
+      </li>
+      <li class="nav-item">
+        <form id="get_member_cover_letter" name="{{session.view_member}}" action="/member_cover_letters/{{session.view_member}}" method="POST">
+          <button class="nav-link" type="submit">Cover Letter</button>
+        </form>
+      </li>
+      <li class="nav-item">
+          <form id="get_member_my_life" name="{{session.view_member}}" action="/member_my_life/{{session.view_member}}" method="POST">
+            <button class="nav-link" type="submit">My Life</button>
+          </form>
+      </li>
+    </ul>
+    <br>
+    <div id="member_card_content" class="card">
+
+        <h5 class="card-header">About Me</h5>
+        <div class="card-body">
+            <img id="profile_pic" src="{{intro_data.profile_pic}}" class="rounded" alt="Profile Picture">
+            <br>
+            <div class="intro">
+              <label style="font-size: large;" for="major"> <strong>Major:</strong></label>&nbsp;
+              <h5 id="major_data" name="major_data" class="card-title">{{intro_data.major}}</h5>
+            </div>
+            <div class="intro">
+              <label for="class_data"><em>Class Standing:</em></label>&nbsp;
+              <p id="class_standing_data" name="class_data" class="card-text">{{intro_data.class_standing}}</p>
+            </div>
+            <label for="bio_data"><strong>Bio</strong></label>
+            <p id="bio_data" name="bio_data" class="card-text">{{intro_data.bio}}</p>
+            <div class="row">
+              <div class="col">
+                  <label for="link_1_data">Link 1:&nbsp; </label><a id="link_1_data" href="{{intro_data.link_1}}" target="_blank">{{intro_data.link1_label}}</a> 
+              </div>
+              <div class="col">
+                  <label for="link_2_data">Link 2:&nbsp; </label><a id="link_2_data" href="{{intro_data.link_2}}" target="_blank">{{intro_data.link2_label}}</a>
+              </div>
+              <div class="col">
+                  <label for="link_3_data">Link 3:&nbsp; </label><a id="link_3_data" href="{{intro_data.link_3}}" target="_blank">{{intro_data.link3_label}}</a>
+              </div>
+            </div>
+            <br>          
+        </div>
+
+    </div>
+  </div>
+
+  <footer class="py-4 text-black-50">
+    <div class="container text-center">
+      <a href="/">
+        <img
+          style="padding-bottom:6px; width:8%; height:auto;"
+          src="../static/images/logo.png"
+          id="footer_logo"
+        />
+      </a>
+      <a class="footer_icons" href="https://www.facebook.com/whatskraken422/?modal=admin_todo_tour" target="_blank">
+        <i
+          style="color:black; font-size:24px; padding-right:5px;"
+          class="fa fa-facebook-official"
+        ></i>
+      </a>
+      <a class="footer_icons" href="https://www.instagram.com/whatskraken422/" target="_blank"
+        ><i
+          style="color:black; font-size:24px; padding-right:5px;"
+          class="fa fa-instagram"
+        ></i
+      ></a>
+      <a class="footer_icons" href="https://bitbucket.org/cis422f19team3/project2/src/master/" target="_blank"
+        ><i
+          style="color:black; font-size:24px; padding-right:5px;"
+          class="fa fa-bitbucket"
+        ></i
+      ></a>
+      <br />
+      <small>University of Oregon &copy; What's Kraken</small>
+    </div>
+  </footer>
+
+    <!--
+      SCRIPTS FOR BOOTSTRAP: jQuery first, then Popper.js, then Bootstrap JS
+    -->
+    <script type="text/javascript" src="../static/js/navbar.js"></script>
+    <script type="text/javascript" src="../static/js/functions.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- image upload js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $("#profile_pic").click(function(e) {
+        $("#imageUpload").click();
+      });
+
+      function previewProfileImage( uploader ) {
+        //ensure a file was selected 
+        if (uploader.files && uploader.files[0]) {
+          var imageFile = uploader.files[0];
+          var reader = new FileReader();    
+          reader.onload = function (e) {
+            //set the image data as source
+            $('#profile_pic').attr('src', e.target.result);
+          }    
+          reader.readAsDataURL( imageFile );
+        }
+      }
+
+      $("#imageUpload").change(function(){
+        previewProfileImage( this );
+      });
+    </script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </body>
+</html>

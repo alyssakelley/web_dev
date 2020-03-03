@@ -1,0 +1,9 @@
+flask
+flask_login
+wtforms
+flask_wtf
+pymongo
+dnspython
+pytest
+flask-testing
+boto3

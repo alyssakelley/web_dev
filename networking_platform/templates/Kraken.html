@@ -1,0 +1,334 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<style>
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css';
+@import 'https://fonts.googleapis.com/css?family=Raleway:100,600';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300';
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: #999;
+  background-image:url(../static/images/background.png) ;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px 0;
+  text-transform: none;
+  color: lightpink;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+a:link,
+a:active,
+a:visited{
+  color:rgba(255,255,255,1);
+}
+
+a:hover{
+  color:rgba(255,255,255,0.6);
+}
+
+.gray {
+  color: #a5a5a5;
+}
+
+.team{
+  margin:40px;
+}
+
+.team-member {
+  margin: 15px 0;
+  padding: 0;
+}
+
+.team-member figure {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.team-member figure img {
+  min-width: 100%;
+}
+
+.team-member figcaption p {
+  font-size: 16px;
+}
+
+.team-member figcaption ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.team-member figcaption ul {
+  visibility: visible;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.team-member figcaption ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.team-member h4 {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.team-member figcaption {
+  padding: 50px;
+  color: transparent;
+  background-color: transparent;
+  position: absolute;
+  z-index: 996;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member figure:hover figcaption {
+  visibility: visible;
+  color: #fff;
+  background: lightpink;
+  /* Primary color, can be changed via colors.css */
+  
+  height: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member figure:hover figcaption ul li a:hover {
+  color: rgba(49, 49, 49, .97);
+}
+
+.team-member figure img {
+  -webkit-transform: scale(1) rotate(0) translateY(0);
+  -moz-transform: scale(1) rotate(0) translateY(0);
+  -o-transform: scale(1) rotate(0) translateY(0);
+  -ms-transform: scale(1) rotate(0) translateY(0);
+  transform: scale(1) rotate(0) translateY(0);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.team-member figure:hover img {
+  -webkit-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -moz-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -o-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -ms-transform: scale(1.1) rotate(1deg) translateY(12px);
+  transform: scale(1.1) rotate(1deg) translateY(12px);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+footer{
+    background: white;
+}
+
+.center{
+  text-align: center;
+}
+</style>
+
+<!-- Our team Section -->
+<section id="team" class="team content-section">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-md-12">
+              <h2>Our Team</h2>
+              <h3 class="caption gray">Meet the people who make awesome stuff!</h3>
+            </div><!-- /.col-md-12 -->
+      
+            <div class="container">
+              <div class="row">
+      
+                <div class="col-md-4">
+                  <div class="team-member">
+                    <figure>
+                      <img src="../static/images/alex_depaz.jpeg" alt="" class="img-responsive">
+                      <figcaption>
+                        <p>University of Oregon Computer Science Student</p>
+                        <ul>
+                          <li><a href="https://www.facebook.com/alejandro.depaz.7 " target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+                          <li><a href="https://bitbucket.org/alejandrodepaz/my-personal-projects/src/master/" target="_blank"><i class="fa fa-bitbucket fa-2x"></i></a></li>
+                          <li><a href="https://www.linkedin.com/in/alejandro-d-44727a103/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                        </ul>
+                      </figcaption>
+                    </figure>
+                    <h4>Alejandro De Paz</h4>
+                    <p>Team Lead & Program Developer</p>
+                  </div><!-- /.team-member-->
+                </div><!-- /.col-md-4 -->
+      
+                <div class="col-md-4">
+                  <div class="team-member">
+                    <figure>
+                      <img src="../static/images/alyssa_kelley.png" alt="" class="img-responsive">
+                      <figcaption>
+                        <p>University of Oregon Computer Science Student</p>
+                        <ul>
+                          <li><a href="https://www.facebook.com/AlyssaBreannaKelley" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+                          <li><a href="https://github.com/alyssakelley" target="_blank"><i class="fa fa-github fa-2x"></i></a></li>
+                          <li><a href="https://www.linkedin.com/in/alyssabkelley/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                        </ul>
+                      </figcaption>
+                    </figure>
+                    <h4>Alyssa Kelley</h4>
+                    <p>UI Designer & Documentation </p>
+                  </div><!-- /.team-member-->
+                </div><!-- /.col-md-4 -->
+      
+                <div class="col-md-4">
+                  <div class="team-member">
+                    <figure>
+                      <img src="../static/images/anne_glickenhaus.png" alt="" class="img-responsive">
+                      <figcaption>
+                        <p>University of Oregon Computer Science Student</p>
+                        <ul>
+                          <li><a href="https://www.facebook.com/anne.glickenhaus" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+                          <li><a href=""><i class="fa fa-github fa-2x"></i></a></li>
+                          <li><a href="https://www.linkedin.com/in/anne-glickenhaus-8260b1b9/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                        </ul>
+                      </figcaption>
+                    </figure>
+                    <h4>Anne Glickenhaus</h4>
+                    <p>Test & Documentation</p>
+                  </div><!-- /.team-member-->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-4">
+                        <div class="team-member">
+                          <figure>
+                            <img src="../static/images/derek_swank.png" alt="" class="img-responsive">
+                            <figcaption>
+                              <p>University of Oregon Computer Science Student</p>
+                              <ul>
+                                <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                <li><a href=""><i class="fa fa-github fa-2x"></i></a></li>
+                                <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                              </ul>
+                            </figcaption>
+                          </figure>
+                          <h4>Derek Swank</h4>
+                          <p>Program Developer</p>
+                        </div><!-- /.team-member-->
+                      </div><!-- /.col-md-4 -->
+                
+                      <div class="col-md-4">
+                            <div class="team-member">
+                              <figure>
+                                <img src="../static/images/haihan.jpg" alt="" class="img-responsive">
+                                <figcaption>
+                                  <p>University of Oregon Computer Science Student</p>
+                                  <ul>
+                                    <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                    <li><a href=""><i class="fa fa-github fa-2x"></i></a></li>
+                                    <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                  </ul>
+                                </figcaption>
+                              </figure>
+                              <h4>Haihan Zhai</h4>
+                              <p>Web Developer</p>
+                            </div><!-- /.team-member-->
+                          </div><!-- /.col-md-4 -->
+                    
+                          <div class="col-md-4">
+                                <div class="team-member">
+                                  <figure>
+                                    <img src="../static/images/joe_sventek.png" alt="" class="img-responsive">
+                                    <figcaption>
+                                      <p>The Head Honcho</p>
+                                      <ul>
+                                        <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-github fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                      </ul>
+                                    </figcaption>
+                                  </figure>
+                                  <h4>Joe Sventek</h4>
+                                  <p>CTO</p>
+                                </div><!-- /.team-member-->
+                              </div><!-- /.col-md-4 -->
+          
+      
+      
+              </div><!-- /.row -->
+            </div><!-- /.container -->
+      
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </section><!-- /.our-team -->
+
+      <div class = "center">
+      <button type="button" class="btn btn-outline-dark">
+          <a href="index" style="color:black">Home</a>
+      </button>
+      </div>
+
+      <footer class="py-4 text-black-50">
+            <div class="container text-center">
+              <a href="/">
+                <img
+                  style="padding-bottom:6px; width:8%; height:auto;"
+                  src="../static/images/logo.png"
+                  id="footer_logo"
+                />
+              </a>
+              <a class="footer_icons" href="https://www.facebook.com/whatskraken422/?modal=admin_todo_tour" target="_blank"
+                ><i
+                  style="color:black; font-size:24px; padding-right:5px;"
+                  class="fa fa-facebook-official"
+                ></i>
+              </a>
+              <a class="footer_icons" href="https://www.instagram.com/whatskraken422/" target="_blank"
+                ><i
+                  style="color:black; font-size:24px; padding-right:5px;"
+                  class="fa fa-instagram"
+                ></i
+              ></a>
+              <a class="footer_icons" href="https://bitbucket.org/cis422f19team3/project2/src/master/" target="_blank"
+                ><i
+                  style="color:black; font-size:24px; padding-right:5px;"
+                  class="fa fa-bitbucket"
+                ></i
+              ></a>
+              <br />
+              <small>University of Oregon &copy; What's Kraken</small>
+            </div>
+          </footer>

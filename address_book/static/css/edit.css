@@ -1,0 +1,7 @@
+body {
+    height: 100vh;
+    color: white;
+    background: url(../images/background_w_banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

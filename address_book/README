@@ -1,0 +1,14 @@
+What is it?
+
+SlackinKrakens AddressBook is a desktop application address book for linux based systems. The address book allows you to save contacts and their relevant information all in the comfort of a web-based interface. You can create new address books, add contacts to them, delete contacts from them, and delete entire address books
+
+How to Install
+
+These instructions are for Linux based systems.
+
+1.) Make sure you have Python3 installed
+    * On a debian-based system run "sudo apt install python3"
+2.) Make sure you have the python pip package manager installed
+    * On a debian-based system run "sudo apt install python3-pip"
+3.) Make sure you are in the "SlackinKrakens_AddressBook" folder and run the application
+    * Run "sudo bash run.sh" to install the requirements and run the application

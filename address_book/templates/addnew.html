@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            table, td {
+                border: 1px solid black;
+            }
+        </style>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/addnew.css')}}">
+        <meta charset="UTF-8" />
+        <meta
+          http-equiv="X-UA-Compatible"
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>Slackin’ Kraken</title>
+    </head>
+    <body>
+        <form action="/logout">
+            <button style="float:right;" class="logout" type = "submit" name = "logoutButton" formaction = "/logout" id = "logout">Logout</button>
+        </form>
+
+        <div id="edit_modal" class="text-center">
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="edit_contact" action="/_editContact" method="POST">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="contact_fname">First Name</label>
+                                        <input id="contact_fname" type="text" class="form-control" name="contact_fname" aria-describedby="firstname" placeholder="First Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact_lname">Last Name</label>
+                                        <input id="contact_lname" type="text" class="form-control" name="contact_lname" aria-describedby="lastname" placeholder="Last Name">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="contact_phone">Phone</label>
+                                            <input id="contact_phone" type="text" class="form-control" name="contact_phone" aria-describedby="phone" placeholder="Phone Number">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="contact_email">email</label>
+                                            <input type="email" id="contact_email" class="form-control" name="contact_email" aria-describedby="email" placeholder="johndoe@gmail.com">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="contact_address">Street Address</label>
+                                            <input id="contact_address" type="text" class="form-control" name="contact_address" aria-describedby="address" placeholder="Street Address">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="city">City</label>
+                                                <input id="contact_city" type="text" class="form-control" name="contact_city" aria-describedby="city" placeholder="City">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="state">State</label>
+                                                <input id="contact_state" type="text" class="form-control" name="contact_state" aria-describedby="state" placeholder="OR">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact_zipcode">Zipcode</label>
+                                        <input id="contact_zipcode" type="text" class="form-control" name="contact_zipcode" aria-describedby="zipcode" placeholder="Zip" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button id="edit" type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <!-- Navigation bar-->
+        <!-- <div class=".col-md-"> -->
+        <div class="row h-25"></div>
+            <!-- <div class="row mx-auto">
+                <form id="save" action="/addnew/save">
+                    <button id="save" name = "saveButton" class="btn btn-secondary">SAVE</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/';">HOME</button>
+                    <button type="button" class="btn btn-secondary" onclick="name_sort_toggle()">SORT BY NAME</button>
+                    <button type="button" class="btn btn-secondary" onclick="zip_sort_toggle()">SORT BY STATE</button>
+                </form>
+            </div> -->
+
+            <div class="row w-100" style="padding-left: 15px;">
+                <!-- srollable div to display contacts -->
+                <div class="col-8 text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <h3 id="address_book_title">{{session["title"]}}</h3>
+                    <div class="scroll-box" id="contact_table">
+
+                        <!-- Insert Contacts Here-->
+                        <!-- If the user selects to Open Existing initially, then we will immediately populate 
+                            the table with the corresponding contacts -->
+                        {% for contact in contacts %}
+                            
+                            <div id={{contact.id_num}} style="border-style:groove; margin-bottom:5px;" class="text-center contact">
+                                <p>
+                                    <strong>First Name:</strong><span id="fname{{contact.id_num}}">{{contact.fname}}</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <strong>Last Name:</strong><span id="lname{{contact.id_num}}">{{contact.lname}}</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Phone:</strong><span id="phone{{contact.id_num}}"> {{contact.phone}}</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Email:</strong><span id="email{{contact.id_num}}"> {{contact.email}}</span>
+                                    <br><strong>Address:</strong><span id="addy{{contact.id_num}}"> {{contact.address}}</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <strong>City:</strong><span id="city{{contact.id_num}}"> {{contact.city}}</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <strong>State:</strong><span id="state{{contact.id_num}}"> {{contact.state}}</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <strong>Zipcode:</strong><span id="zip{{contact.id_num}}">{{contact.zipcode}}</span>
+                                </p> 
+                                <button id={{contact.id_num}} type="button" onclick="get_btn_id(this.id)" class="btn btn-outline-dark edit_btn" data-toggle="modal" data-target="#exampleModal">Edit Contact</button> 
+                                <button id={{contact.id_num}} type="button" onclick="delete_contact(this.id)" class="btn btn-outline-dark delete_btn">Delete Contact</button>
+                            </div>
+                        {% endfor %}    
+                    </div>
+                    <div class="row mx-auto">
+		                 <form id="delete_book" action="/addnew/delete">
+			            <button id="delete_book" type="submit" name="deleteBookButton" onclick="window.location.href = '/';" class="btn btn-secondary">Delete Book</button>&nbsp;
+		                </form>
+                        <form id="save" action="/addnew/save">
+                            <button id="save" name = "saveButton" class="btn btn-secondary">SAVE</button>&nbsp;
+                        </form>
+		                 <button type="button" class="btn btn-secondary" onclick="window.location.href='/';">HOME</button>&nbsp;
+                         <button type="button" class="btn btn-secondary" onclick="name_sort_toggle()">SORT BY NAME</button>&nbsp;
+                         <button type="button" class="btn btn-secondary" onclick="zip_sort_toggle()">SORT BY ZIP</button>&nbsp;
+			
+                    </div>
+                </div>
+
+                <div class="col-4 h-50">
+                    <!-- Form for adding new contacts -->
+                    <div class="card mx-auto" style="width: 18rem;" id="contact_card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add New Contact</h5>
+                            <form id="new_contact_form" action = "/_addContact" method="POST">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input id="firstname" type="text" class="form-control" name="first_name" aria-describedby="firstname" placeholder="First Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="firstName">Last Name</label>
+                                            <input id="lastname" type="text" class="form-control" name="last_name" aria-describedby="lastname" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" id="phone" type="text" class="form-control" name="phone_num" aria-describedby="phone" placeholder="5039998888">
+                                </div>
+                                <div class="form-group">
+                                        <label for="email">email</label>
+                                        <input type="email" id="email" class="form-control" name="email" aria-describedby="email" placeholder="johndoe@gmail.com">
+                                </div>
+                                <div class="form-group">
+                                        <label for="address">Street Address</label>
+                                        <input id="address" type="text" class="form-control" name="address" aria-describedby="address" placeholder="1585 E 13th Ave">
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input id="city" type="text" class="form-control" name="city" aria-describedby="city" placeholder="City">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <input id="state" type="text" class="form-control" name="state" aria-describedby="state" placeholder="OR">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipcode">Zipcode</label>
+                                    <input type="text" pattern="[0-9]{5}" id="zip" type="text" class="form-control" name="zip_code" aria-describedby="zipcode" placeholder="Zip" required>
+                                </div>
+                                <button id="add_new">Add</button>
+                            </form>
+                            <br>
+                            <button id="cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+        </div>
+        <footer>
+
+        </footer>
+
+
+        <!-- SCRIPTS FOR BOOTSTRAP: jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+        ></script>
+        <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+        ></script>
+
+        <script type="text/javascript"
+        src="{{ url_for('static', filename='addnew.js') }}"></script>
+    </body>
+</html>
+
+<!--
+teame name: The Slackin’ Krakens!>
+address book name: Kraken Address Book!
+-->

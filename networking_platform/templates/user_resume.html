@@ -1,0 +1,82 @@
+<h5 class='card-header'>Resume</h5>
+<div class='card-body'>
+    {% if resume_data.res_type == "resume_uploads" %}
+        <style>
+            .card-body{
+                text-align:center;
+            }
+        </style>
+        <iframe src="{{resume_data.res_data}}" height="800"; width="600"></iframe>
+    {% elif resume_data.res_type == "resume_creations" %}
+        <style>
+            .card-body{
+                text-align:left;
+            }
+        </style>
+
+        <h3> {{resume_data.res_data.res_fname}} {{resume_data.res_data.res_lname}}</h3>
+        <p>{{resume_data.res_data.res_address}} | {{resume_data.res_data.city_state}} {{resume_data.res_data.zip}} | {{resume_data.res_data.res_number}} | {{resume_data.res_data.res_email}}</p>
+        
+        <hr>
+        <h5>Objective</h5>
+        <p>{{resume_data.res_data.objective}}</p>
+        <br>
+        <h5>Education</h5>
+        <ul>
+            <li><em><span>{{resume_data.res_data.res_school}}</span></em></li>
+            <li><strong>Major: </strong> <span>{{resume_data.res_data.res_major}}</span></li>
+            <li><strong>GPA: </strong> <span>{{resume_data.res_data.gpa}}</span></li>
+        </ul>
+        <br>
+        <h5>Work Experience</h5>
+        <div id="job1">
+            {% if resume_data.res_data.job1_title != "" and resume_data.res_data.job1_desc != "" and resume_data.res_data.job1_dates != "" and resume_data.res_data.job1_emp != "" %}
+                <p><strong>{{resume_data.res_data.job1_title}}</strong><br>
+                <em>{{resume_data.res_data.job1_emp}}</em>&nbsp; <span>{{resume_data.res_data.job1_dates}}</span><br>
+                <span>{{resume_data.res_data.job1_desc}}</span></p>
+            {% endif %}
+        </div>
+        <div id="job2">
+            {% if resume_data.res_data.job2_title != "" and resume_data.res_data.job2_desc != "" and resume_data.res_data.job2_dates != "" and resume_data.res_data.job2_emp != "" %}
+                <p><strong>{{resume_data.job2_title}}</strong><br>
+                <em>{{resume_data.res_data.job2_emp}}</em>&nbsp; <span>{{resume_data.res_data.job2_dates}}</span><br>
+                <span>{{resume_data.res_data.job2_desc}}</span></p>
+            {% endif %}
+        </div>
+        <div id="job3">
+            {% if resume_data.res_data.job3_title != "" and resume_data.res_data.job3_desc != "" and resume_data.res_data.job3_dates != "" and resume_data.res_data.job3_emp != "" %}
+                <p><strong>{{resume_data.res_data.job3_title}}</strong><br>
+                <em>{{resume_data.res_data.job3_emp}}</em>&nbsp; <span>{{resume_data.res_data.job3_dates}}</span><br>
+                <span>{{resume_data.res_data.job3_desc}}</span></p>
+            {% endif %}
+        </div>
+        <br>
+        <h5>Projects</h5>
+        <div id="proj1">
+            {% if resume_data.res_data.proj1_title != "" and resume_data.res_data.proj1_desc != "" %}
+                <p><strong><span>{{resume_data.res_data.proj1_title}}</span></strong><br>
+                <span>{{resume_data.res_data.proj1_desc}}</span></p>
+            {% endif %}
+        </div>
+        <div id="proj2">
+            {% if resume_data.res_data.proj2_title != "" and resume_data.res_data.proj2_desc != "" %}
+                <p><strong>{{resume_data.res_data.proj2_title}}</strong><br>
+                {{resume_data.res_data.proj2_desc}}</p>
+            {% endif %}
+        </div>
+        <div id="proj3">
+            {% if resume_data.res_data.proj3_title != "" and resume_data.res_data.proj3_desc != "" %}
+                <p><strong>{{resume_data.res_data.proj3_title}}</strong><br>
+                {{resume_data.res_data.proj3_desc}}</p>
+            {% endif %}
+        </div>
+        <br>
+        <h5>Skills</h5>
+
+        <p>{{resume_data.res_data.skillset}}</p>
+
+    {% elif resume_data.res_type == "" or resume_data.res_data == "" %}
+        <p>This member has not yet made a previewable resume!</p>
+    {% endif %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/functions.js"></script>

@@ -1,0 +1,30 @@
+https://stackoverflow.com/questions/4542941/street-address-search-in-a-string-python-or-ruby
+
+(\d{1,10}( \w+){1,10}( ( \w+){1,10})?( \w+){1,10}[,.](( \w+){1,10}(,)? [A-Z]{2}( [0-9]{5})?)?)
+
+a) Street number (1...N digits);
+
+b) Street name : one or more words capitalized;
+
+b-2) (optional) would be best if it could be prefixed with abbrev. "S.", "N.", "E.", "W."
+
+c) (optional) unit/apartment/etc can be any (incl. empty) number of arbitrary characters
+
+d) Street "type": one of ("st.", "ave.", "way");
+
+e) City name : 1 or more Capitalized words;
+
+f) (optional) state abbreviation (2 letters)
+
+g) (optional) zip which is any 5 digits.
+
+https://code.google.com/archive/p/geo-autocomplete/
+
+https://usaddress.readthedocs.io/en/latest/
+
+
+https://github.com/madisonmay/CommonRegex/blob/master/commonregex.py
+
+street_address   = re.compile('\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|park|parkway|pkwy|circle|cir|boulevard|blvd)\W?(?=\s|$)', re.IGNORECASE)
+
+email            = re.compile("([a-z0-9!#$%&'*+\/=?^_`{|.}~-]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)", re.IGNORECASE)

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>Slackin’ Kraken</title>
+    </head>
+    <body>
+        <form action="/logout">
+            <button class="logout" type = "submit" name = "logoutButton" formaction = "/logout" id = "logout">Logout</button>
+        </form>
+
+        <div class="container h-100 mx-auto">
+            <div class="row h-75"></div>
+            <div class="row h-25 justify-content-center align-items-center">
+                <div class="text-center">
+                    
+                    <h1>Create Your Own Address Book</h1>
+                    <!-- Button trigger modal -->
+                    
+                    <button type="button" class="button" data-toggle="modal" data-target="#create_new">
+                        Create New 
+                    </button>
+                
+                    <button type="button" class="button1" data-toggle="modal" data-target="#open_existing">
+                        Open Existing
+                    </button>
+
+                    <!-- Create New Address Book Modal -->
+                    <div class="modal fade" id="create_new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Address Book Title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/addnew/create_new" method="POST" target="_blank">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input id="title" type="text" class="form-control" name="title" aria-describedby="title" placeholder="Address Book Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button id="create" type="submit" class="btn btn-primary" onclick="hide_create_new_modal()"formaction="/addnew">Create</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="open_existing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="open">Your Address Books</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <!-- User Address Books Here-->
+                                        <p>Your Address Books:</p>
+
+                                        {% for book in session["address_book_names"] %}
+                                            <a href="/openExisting/{{book}}" target="_blank">{{book}}</a> <br>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+        ></script>
+        <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+        ></script>
+        <script type="text/javascript"
+        src="{{ url_for('static', filename='home.js') }}"></script>
+
+    </body>
+</html>

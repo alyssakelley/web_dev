@@ -1,0 +1,67 @@
+body{
+    background: url(../images/background_w_banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+
+input[type=submit]{
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+
+.basic{
+    border-radius: 30px;
+    background:rgba(108, 115, 129, 0.7);
+    /* background: pink; */
+    /* position: center;
+    text-align: center;
+    bottom: 50%;
+    display: inline-block; */
+    /* margin-left: 25%;
+    margin-right:25%;
+    width: 50%; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 50%;
+    text-align: left;
+    vertical-align: center;
+    font: 'Times New Roman';
+    padding: 0.5em;
+}
+
+.special{
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+    vertical-align: center;
+    left:26%;
+
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #000, #fff, #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 3s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.699);;
+}
+  
+@keyframes animate {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+}

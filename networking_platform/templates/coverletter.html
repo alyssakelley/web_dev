@@ -1,0 +1,127 @@
+<div id="cover_letter_edit" class="text-center">
+                
+    <!-- Modal -->
+    <div class="modal fade" id="cover_letter_builder_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cover Letter Builder</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="cover_letter_creation_form" action="/cover_letter_create" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="title">Cover Letter Label</label>
+                            <input type="text" id="title" class="form-control" name="title" aria-describedby="Cover Letter Title" placeholder="Cover Letter Title" required>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="fname">First Name</label>
+                                    <input id="fname" type="text" class="form-control" name="fname" aria-describedby="firstname" placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="lname">Last Name</label>
+                                    <input id="lname" type="text" class="form-control" name="lname" aria-describedby="lastname" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" name="email" aria-describedby="Your Email" placeholder="Your Email">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="number">Phone Number</label>
+                                <input type="text" id="number" class="form-control" name="number" aria-describedby="Phone Number" placeholder="503-XXX-XXXX">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="address">Address</label>
+                                <input id="address" type="text" class="form-control" name="address" aria-describedby="Address" placeholder="Street Address">
+                            </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                <label for="city_state">City & State Code</label>
+                                <input type="text" id="city_state" class="form-control" name="city_state" aria-describedby="City & State" placeholder="Portland, OR">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="zip">Zip Code</label>
+                                    <input type="text" id="zip" class="form-control" name="zip" aria-describedby="Zipcode" placeholder="Your Zip Code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="introduction">Introduction</label>
+                            <textarea rows="5" id="introduction" type="text" class="form-control" name="introduction" aria-describedby="Introduction" placeholder="Your introduction paragraph providing more information about yourself to your future employer"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="bodyparagraph">Body Paragraph</label>
+                            <textarea rows="5" id="bodyparagraph" type="text" class="form-control" name="bodyparagraph" aria-describedby="Body Paragraph" placeholder="Your body paragraph to illustrate your passions."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="conclusion">Conclusion</label>
+                            <textarea rows="5" id="conclusion" type="text" class="form-control" name="conclusion" aria-describedby="Conclusion" placeholder="Your conclusion paragraph to wrap up your cover letter and give a final reason why you are the best fit for this position."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button id="cl_builder_btn" type="submit" class="btn btn-primary">Finish</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5 class='card-header'>Cover Letters</h5>
+<div class='card-body'>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+            <h5>Your Uploaded Cover letters</h5>
+            <div class="uploaded_cover_letters">
+                <ol>
+                {% for uploaded_cl in user_cover_letters.cover_letter_uploads%}
+                    <li id="{{uploaded_cl.key}}"><a href="{{uploaded_cl.aws_link}}" target="_blank">{{uploaded_cl.filename}}</a>
+                        <button name="{{uploaded_cl.key}}" type="button" class="btn btn-outline-dark delete_uploaded_cl_btn">Delete</button>&nbsp;&nbsp;
+                        <button cl_type="cover_letter_uploads" name="{{uploaded_cl.key}}" type="button" class="btn btn-outline-dark set_default_cl_btn">Make Default</button>&nbsp;&nbsp;</li>
+                {% endfor %}
+                </ol>
+            </div>
+            <br>
+            <p>Choose a file and select "Upload Cover letter" to add a new PDF Cover letter to your portfolio.</p>
+            <form id="cover_letter_upload_form" method="POST" action="cover_letter_upload" enctype="multipart/form-data">
+                <input type="file" name="cover_letter_upload">  
+                <button id="cover_letter_upload_btn" class="btn btn-outline-dark" type="button">Upload Cover letter</button>
+            </form>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+                <h5>Cover Letters Created Using Cover-Letter-Builder</h5>
+                <div class="created_cover_letters">
+                    <ol>
+                        {% for created_cl in user_cover_letters.cover_letter_creations%}
+                            <li id="{{created_cl.title}}"><a href="/cover_letter_preview/{{created_cl.title}}" target="_blank">{{created_cl.title}}</a>&nbsp;&nbsp;
+                                <button name="{{created_cl.title}}" type="button" class="btn btn-outline-dark delete_created_cl_btn">Delete</button>&nbsp;&nbsp;
+                                <button cl_type="cover_letter_creations" name="{{created_cl.title}}" type="button" class="btn btn-outline-dark set_default_cl_btn">Make Default</button></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+                <br>
+                <p>Select "Build Cover letter" to use our custom Cover letter-builder template.</p>
+            <button id="cl_builder_modal_btn" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#cover_letter_builder_modal">Build Cover letter</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../static/js/functions.js"></script>

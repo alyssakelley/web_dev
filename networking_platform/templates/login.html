@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="../static/css/login.css">
+
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+<body>
+  <!-- main nav bar -->
+  <nav>
+      <ul>
+        <li><a href="index">Home</a></li>
+        <li><a href="Kraken">What's Kraken</a></li>
+        <li><a href="mailto:whatskraken422@gmail.com" target="_blank" >Contact Us</a></li>
+      </ul>
+      <div class="button">
+        <a class="btn-open" href="#"></a>
+      </div>
+  </nav>
+    <div class="overlay">
+      <div class="wrap">
+        <ul class="wrap-nav">
+          <li><a href="index">Home</a>
+          <ul>
+            <li><a href="members">View Members</a></li>
+            <li><a href="profile">My Porttfolio</a></li>
+          </ul>
+          </li>
+          <li><a href="Kraken">What's Kraken</a>
+          <ul>
+            <li><a href="Kraken">About Team</a></li>
+            <li><a href="Kraken">Designers</a></li>
+            <li><a href="Kraken">Developers</a></li>
+          </ul>
+          </li>
+          <li><a href="#">Contact Us</a>
+          <ul>
+            <li><a href="#">Tel: +1 541-666-6666</a></li>
+            <li><a href="mailto:whatskraken422@gmail.com" target="_blank">Email: whatskraken422@gmail.com</a></li>
+          </ul>
+          </li>
+        </ul>
+        <div class="social">
+          <a href="https://www.facebook.com/whatskraken422/?modal=admin_todo_tour" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-facebook"></i>
+          </div>
+          </a>
+          <a href="https://www.instagram.com/whatskraken422/" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-instagram"></i>
+          </div>
+          </a>
+          <a href="https://bitbucket.org/cis422f19team3/project2/src/master/" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-bitbucket"></i>
+          </div>
+          </a>
+          <a href="https://twitter.com/422Cis" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-twitter"></i>
+          </div>
+          </a>
+          <a href="https://drive.google.com/drive/u/1/folders/1bxKQNk051SlLu3lHUZJk8QFAh1PicJKl" target="_blank">
+          <div class="social-icon">
+            <i class="fa fa-google"></i>
+          </div>
+          </a>
+          <p>
+            From: Eugene, Oregon<br>
+              Site: <a href="http://mario-loncarek.from.hr/">weblink here</a>
+          </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class = "basic">
+    <p class="sign" align="center">Sign in</p>
+    <form method = "POST" action = "" class="from1">
+    {{ form.csrf_token }}
+    <p>{{form.username(class_='un')}}</p>
+    &nbsp;
+    <p>{{form.password(class_='pass')}}</p>
+    &nbsp;
+    <a>{{form.submit(class_='submit')}}</a>
+    {% for error in form.submit.errors %}
+    <span style="color: red;">[{{error}}]</span>
+    {% endfor %}
+    </form>
+
+    <!-- <p class="NewUser" align="center">New User? <a href="{{ url_for('register') }}">Sign Up Here.</a></p> -->
+    <p  align = "center"><a class="NewUser" href="{{ url_for('register') }}">New User? Sign Up Here.</a></p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <li align="center">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+  </div>
+
+<!-- footer -->
+<footer class="py-4 text-black-50">
+    <div class="container text-center">
+      <a href="/">
+        <img
+          style="padding-bottom:6px; width:8%; height:auto;"
+          src="../static/images/logo.png"
+          id="footer_logo"
+        />
+      </a>
+      <a class="footer_icons" href="https://www.facebook.com/whatskraken422/?modal=admin_todo_tour" target="_blank"
+        ><i
+          style="color:black; font-size:24px; padding-right:5px;"
+          class="fa fa-facebook-official"
+        ></i>
+      </a>
+      <a class="footer_icons" href="https://www.instagram.com/whatskraken422/" target="_blank"
+        ><i
+          style="color:black; font-size:24px; padding-right:5px;"
+          class="fa fa-instagram"
+        ></i
+      ></a>
+      <a class="footer_icons" href="https://bitbucket.org/cis422f19team3/project2/src/master/" target="_blank"
+        ><i
+          style="color:black; font-size:24px; padding-right:5px;"
+          class="fa fa-bitbucket"
+        ></i
+      ></a>
+      <br />
+      <small>University of Oregon &copy; What's Kraken</small>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="../static/js/navbar.js"></script>
+  <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+  ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+  ></script>
+  <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+  ></script>  
+
+</body>   
+</html>

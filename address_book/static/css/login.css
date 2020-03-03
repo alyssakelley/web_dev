@@ -1,0 +1,42 @@
+
+body {
+
+    height: 100vh;
+    background: url(../images/background_w_banner.png);
+    background-size: cover;
+  }
+
+input[type=submit]{
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+
+.basic{
+    border-radius: 30px;
+    background:rgba(108, 115, 129, 0.7);
+    /* background: pink; */
+    /* position: center;
+    text-align: center;
+    bottom: 50%;
+    display: inline-block; */
+    /* margin-left: 25%;
+    margin-right:25%;
+    width: 50%; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 50%;
+    text-align: center;
+    vertical-align: center;
+    font: 'Times New Roman';
+    padding: 0.5em;
+}
+
+

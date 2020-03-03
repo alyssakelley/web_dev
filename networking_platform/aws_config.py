@@ -1,0 +1,7 @@
+aws = {
+
+    'ACCESS_KEY_ID': "AKIASKWGXLSZXBVKA2U4",
+    'SECRET_ACCESS_KEY': "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",
+    'REGION_NAME':"us-west-2"
+
+}

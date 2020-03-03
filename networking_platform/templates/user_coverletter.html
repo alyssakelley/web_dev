@@ -1,0 +1,31 @@
+
+<h5 class='card-header'>Cover Letter</h5>
+<div class='card-body'>
+    {% if cl_data.cl_type == "cover_letter_uploads" %}
+        <style>
+            .card-body{
+                text-align:center;
+            }
+        </style>
+        <iframe src="{{cl_data.cl_data}}" height="800"; width="600"></iframe>
+    {% elif cl_data.cl_type == "cover_letter_creations" %}
+        <style>
+            .card-body{
+                text-align:left;
+            }
+        </style>
+
+        <h3> {{cl_data.cl_data.fname}} {{cl_data.cl_data.lname}}</h3>
+        <p>{{cl_data.cl_data.address}} | {{cl_data.cl_data.city_state}} {{cl_data.cl_data.zip}} | {{cl_data.cl_data.number}} | {{cl_data.cl_data.email}}</p>
+        
+        <hr>
+
+        <p>{{cl_data.cl_data.introduction}}</p>
+        <p>{{cl_data.cl_data.bodyparagraph}}</p>
+        <p>{{cl_data.cl_data.conclusion}}</p>
+    {% elif cl_data.cl_type == "" or cl_data.cl_data == "" %}
+        <p>This member has not yet made a previewable cover letter!</p>
+    {% endif %}
+</div>
+
+<script type="text/javascript" src="../static/js/functions.js"></script>
